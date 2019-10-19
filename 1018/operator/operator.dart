@@ -4,6 +4,9 @@ void main() {
   operator_as();
   operator_double_question_make();
   operator_question_dot();
+  operator_cascade();
+  operator_three_dot();
+  operator_three_dot();
 }
 
 // is 用于判断变量是否指定数据类型
@@ -45,4 +48,28 @@ void operator_double_question_make() {
 void operator_question_dot() {
   var area = null;
   print(area?.runtimeType); // null
+}
+
+// 级联运算符 ..
+// 用于连续操作某个对象，而无需每次操作时都 调用该对象
+void operator_cascade() {
+  var list = <int>[1, 2, 3, 4, 5];
+  list
+    ..insert(0, 6)
+    ..removeAt(4)
+    ..add(7);
+
+  print(list); // [6, 1, 2, 3, 5, 7]
+}
+
+// 扩展运算符 ... 和空值感知运算符 ...?
+// 提供了一种多个元素插入集合的简洁方法
+void operator_three_dot() {
+  var list1 = <int>[1, 2, 3];
+  var list2 = [0, ...list1];
+  print(list2); // [0, 1, 2, 3]
+
+  var list3;
+  var list4 = [0, ...?list3];
+  print(list4); // [0]
 }
